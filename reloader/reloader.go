@@ -31,11 +31,11 @@ type Config struct {
 type Reloader struct {
 	*Config
 
-	// proc represents the NATS Server process which will
+	// proc represents the Memphis process which will
 	// be signaled.
 	proc *os.Process
 
-	// pid is the last known PID from the NATS Server.
+	// pid is the last known PID from the Memphis.
 	pid int
 
 	// quit shutsdown the reloader.
@@ -236,7 +236,7 @@ func (r *Reloader) Stop() error {
 	return nil
 }
 
-// NewReloader returns a configured NATS server reloader.
+// NewReloader returns a configured Memphis config reloader.
 func NewReloader(config *Config) (*Reloader, error) {
 	return &Reloader{
 		Config: config,

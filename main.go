@@ -33,18 +33,18 @@ func (s *StringSet) Set(val string) error {
 }
 
 func main() {
-	fs := flag.NewFlagSet("nats-server-config-reloader", flag.ExitOnError)
+	fs := flag.NewFlagSet("memphis-config-reloader", flag.ExitOnError)
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: nats-server-config-reloader [options...]\n\n")
+		fmt.Fprintf(os.Stderr, "Usage: memphis-config-reloader [options...]\n\n")
 		fs.PrintDefaults()
 		fmt.Fprintf(os.Stderr, "\n")
 	}
 
 	// Help and version
 	var (
-		showHelp    bool
-		showVersion bool
-		fileSet     StringSet
+		showHelp     bool
+		showVersion  bool
+		fileSet      StringSet
 		customSignal int
 	)
 
@@ -75,7 +75,7 @@ func main() {
 		flag.Usage()
 		os.Exit(0)
 	case showVersion:
-		fmt.Fprintf(os.Stderr, "NATS Server Config Reloader v%s (%s, %s)\n", Version, GitInfo, BuildTime)
+		fmt.Fprintf(os.Stderr, "Memphis Config Reloader v%s (%s, %s)\n", Version, GitInfo, BuildTime)
 		os.Exit(0)
 	}
 	r, err := reloader.NewReloader(nconfig)
@@ -103,7 +103,7 @@ func main() {
 		}
 	}()
 
-	log.Printf("Starting NATS Server Reloader v%s\n", Version)
+	log.Printf("Starting Memphis Config Reloader v%s\n", Version)
 	err = r.Run(context.Background())
 	if err != nil && err != context.Canceled {
 		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
