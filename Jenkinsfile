@@ -1,4 +1,3 @@
-
 def gitBranch = env.BRANCH_NAME
 def imageName = "memphis-config-reloader"
 def gitURL = "git@github.com:Memphisdev/memphis-config-reloader.git"
