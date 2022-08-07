@@ -4,12 +4,13 @@ def gitURL = "git@github.com:Memphisdev/memphis-config-reloader.git"
 def repoUrlPrefix = "memphisos"
 
 node {
-  
+  git credentialsId: 'main-github', url: gitURL, branch: 'master'
+	
   try{
 	  
     stage('Login to Docker Hub') {
-	    withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_HUB_CREDS_USR', passwordVariable: 'DOCKER_HUB_CREDS_PSW')]) {
-		  sh 'docker login -u $DOCKER_HUB_CREDS_USR -p $DOCKER_HUB_CREDS_PSW'
+	withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_HUB_CREDS_USR', passwordVariable: 'DOCKER_HUB_CREDS_PSW')]) {
+		sh 'docker login -u $DOCKER_HUB_CREDS_USR -p $DOCKER_HUB_CREDS_PSW'
 	    }
     }
 	  
