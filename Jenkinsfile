@@ -4,7 +4,6 @@ def gitURL = "git@github.com:Memphisdev/memphis-config-reloader.git"
 def repoUrlPrefix = "memphisos"
 
 node {
-  git credentialsId: 'main-github', url: gitURL, branch: gitBranch
   
   try{
 	  
