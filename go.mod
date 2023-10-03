@@ -1,4 +1,4 @@
-module github.com/nats-io/nack
+module memphis-config-reloader
 
 go 1.20
 

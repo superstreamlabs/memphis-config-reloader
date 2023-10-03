@@ -10,7 +10,7 @@ import (
 	"strings"
 	"syscall"
 
-	reloader "github.com/nats-io/nack/reloader"
+	reloader "memphis-config-reloader/reloader"
 )
 
 var (
