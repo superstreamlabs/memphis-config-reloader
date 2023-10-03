@@ -10,7 +10,7 @@ import (
 	"strings"
 	"syscall"
 
-	"memphis-config-reloader/reloader"
+	reloader "github.com/nats-io/nack/reloader"
 )
 
 var (
@@ -54,13 +54,13 @@ func main() {
 	fs.BoolVar(&showVersion, "v", false, "Show version")
 	fs.BoolVar(&showVersion, "version", false, "Show version")
 
-	fs.StringVar(&nconfig.PidFile, "P", "/var/run/nats/gnatsd.pid", "NATS Server Pid File")
-	fs.StringVar(&nconfig.PidFile, "pid", "/var/run/nats/gnatsd.pid", "NATS Server Pid File")
-	fs.Var(&fileSet, "c", "NATS Server Config File (may be repeated to specify more than one)")
-	fs.Var(&fileSet, "config", "NATS Server Config File (may be repeated to specify more than one)")
-	fs.IntVar(&nconfig.MaxRetries, "max-retries", 5, "Max attempts to trigger reload")
-	fs.IntVar(&nconfig.RetryWaitSecs, "retry-wait-secs", 2, "Time to back off when reloading fails before retrying")
-	fs.IntVar(&customSignal, "signal", 1, "Signal to send to the NATS Server process (default SIGHUP 1)")
+	fs.StringVar(&nconfig.PidFile, "P", "/var/run/nats/gnatsd.pid", "Memphis Pid File")
+	fs.StringVar(&nconfig.PidFile, "pid", "/var/run/nats/gnatsd.pid", "Memphis Pid File")
+	fs.Var(&fileSet, "c", "Memphis Config File (may be repeated to specify more than one)")
+	fs.Var(&fileSet, "config", "Memphis Config File (may be repeated to specify more than one)")
+	fs.IntVar(&nconfig.MaxRetries, "max-retries", 30, "Max attempts to trigger reload")
+	fs.IntVar(&nconfig.RetryWaitSecs, "retry-wait-secs", 4, "Time to back off when reloading fails before retrying")
+	fs.IntVar(&customSignal, "signal", 1, "Signal to send to the Memphis process (default SIGHUP 1)")
 
 	fs.Parse(os.Args[1:])
 

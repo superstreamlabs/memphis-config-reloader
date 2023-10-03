@@ -1,8 +1,8 @@
-module memphis-config-reloader
+module github.com/nats-io/nack
 
-go 1.18
+go 1.20
 
 require (
-	github.com/fsnotify/fsnotify v1.5.4 // indirect
-	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
+	github.com/fsnotify/fsnotify v1.6.0
+    golang.org/x/sys v0.12.0
 )
