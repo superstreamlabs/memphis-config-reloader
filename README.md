@@ -17,5 +17,5 @@ reloader:
 # First, add in Makefile specific version (line 8) of config reloader.
 
 # Next, build Docker image like this
-make make memphis-config-reloader-dockerx
+make memphis-config-reloader-dockerx
 ```
