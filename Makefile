@@ -20,7 +20,7 @@ memphis-config-reloader.docker:
 .PHONY: memphis-config-reloader-docker
 memphis-config-reloader-docker:
 ifneq ($(ver),)
-	docker build --tag $(drepo)/memphis-config-reloader-test:$(ver) \
+	docker build --tag $(drepo)/memphis-config-reloader:$(ver) \
 		--build-arg VERSION=$(ver)
 else
 	# Missing version, try this.
@@ -33,7 +33,7 @@ memphis-config-reloader-dockerx:
 ifneq ($(ver),)
 	# Ensure 'docker buildx ls' shows correct platforms.
 	docker buildx build \
-		--tag $(drepo)/memphis-config-reloader-test:$(ver) \
+		--tag $(drepo)/memphis-config-reloader:$(ver) \
 		--build-arg VERSION=$(ver) \
 		--platform linux/amd64,linux/arm64 \
 		--push .
